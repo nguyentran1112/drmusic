@@ -1,7 +1,6 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const PlAYER_STORAGE_KEY = "TCN_PLAYER";
-
 const player = $(".player");
 const cd = $(".cd");
 const heading = $("header h2");
@@ -20,7 +19,22 @@ const currentTimeView = $(".header__progress-currentTime");
 const volumeChange = $("#progress-volume");
 const onTab = $('.sub-mobile-category__heading-icon');
 const tabView = $('.sub-mobile-category');
+
+
+// API Zing
+const apiZing = 'http://nhatthanh.online/api/getinfoplaylist?idlist=ZWZB969E';
+
+fetch(apiZing)
+.then(response => response.json())
+.then(json => console.log(json))
+
+
+
+
+
 const app = {
+
+    
     volumeValue: 100,
     currentIndex: 0,
     isPlaying: false,
@@ -101,6 +115,9 @@ const app = {
         this.config[key] = value;
         localStorage.setItem(PlAYER_STORAGE_KEY, JSON.stringify(this.config));
       },
+    
+
+
     rander: function()
     {
         const htmls = this.songs.map((song, index) => {
@@ -198,8 +215,6 @@ const app = {
     
     },
     
-
-
     handelEvents: function(){
 
         const cdThumbAnimate = cdThumb.animate([{ transform: "rotate(360deg)" }], {
@@ -290,6 +305,7 @@ const app = {
                 
                 app.rander();
                 app.loadCurrentSong();
+                app.scrollToActiveSong();
                 audio.play();
                }
                else if (e.target.closest('song-item-action')){
