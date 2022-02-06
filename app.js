@@ -159,11 +159,9 @@ const app = {
 
     render: function () {
        const html = this.songs.map((song, index) => {
-            console.log(song);
             return `
             <div class="col l-2-4 m-4 c-6 ">
-                                <div class="song ${
-                                    index === this.currentIndex ? "active" : ""
+                                <div class="song ${index === this.currentIndex ? "active" : ""
                                 } " data-index = "${index}" id-song="${song.encodeId}">
                                     <div class="thumb" style="background-image: url('${
                                         song.thumbnailM
@@ -185,7 +183,7 @@ const app = {
             `
         })
         playlist.innerHTML = html.join("");
-        // this.loadSong();
+        this.loadSong();
 
 
     },
@@ -246,7 +244,7 @@ const app = {
         cdThumbAnimate.pause();
 
         playBtn.onclick = function () {
-            console.log(123);
+           
             if (app.isPlaying) {
                 audio.pause();
             } else {
@@ -403,17 +401,15 @@ const app = {
             .then(([data,...link]) => {
                 // set src Mp3
                 audio.src = link[0];
-                console.log(link[0]);
+               
                 // set info
                     heading.textContent = this.currentSong.title;
                     headingsub.textContent = this.currentSong.artistsNames;
-                    cdThumb.style.backgroundImage = `url('${this.currentSong.thumbnailM}')`;
+                    cdThumb.style.backgroundImage = `url(${data.thumbnailM})`;
                     if(play){
                         audio.play()
-                    }
-                   
+                    }   
     //     audio.src = this.currentSong.path;
-
             })
             
         },
@@ -424,6 +420,7 @@ const app = {
         this.loadConfig();
         this.defineProperties();
         this.handelEvents();
+        
         // this.loadCurrentSong();
         
         // this.rander();

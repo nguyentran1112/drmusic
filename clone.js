@@ -348,8 +348,6 @@ const app = {
             }
         }
 
-
-      
         navbar.onclick = function (e) {
             let item = e.target.closest('.navbar__item ')
             if(item){
