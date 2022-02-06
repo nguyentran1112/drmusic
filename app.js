@@ -141,7 +141,7 @@ const app = {
 
     // Get list Song 
     getListSongs: function () {
-        fetch('https://nhatthanh.online/api/getinfoplaylist?idlist=ZWZB969E')
+        fetch('http://nhatthanh.online/api/getinfoplaylist?idlist=ZWZB969E')
             .then(res => res.json())
             .then(data => {
                 this.songs = (data.data.song.items)
