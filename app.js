@@ -388,7 +388,7 @@ const app = {
                
             })
     },
-    loadSong( play = true,id = this.songs[this.currentIndex].encodeId){
+    loadSong( play = false,id = this.songs[this.currentIndex].encodeId){
         // api info Song
         const info =  fetch(`https://nhatthanh.online/api/getsonginfo?id=${id}`)
             .then(response => response.json())
@@ -400,13 +400,13 @@ const app = {
         Promise.all([info, linkMp3])
             .then(([data,...link]) => {
                 // set src Mp3
-                audio.src = link[0];
+                audio.src = link;
                
                 // set info
                     heading.textContent = this.currentSong.title;
                     headingsub.textContent = this.currentSong.artistsNames;
                     cdThumb.style.backgroundImage = `url(${data.thumbnailM})`;
-                    if(play){
+                    if(!play){
                         audio.play()
                     }   
     //     audio.src = this.currentSong.path;
