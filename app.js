@@ -417,6 +417,9 @@ const app = {
                     }   
     //     audio.src = this.currentSong.path;
             })
+            .catch((error) => {
+                console.error(error);
+            })
             
             
         },
