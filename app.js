@@ -141,7 +141,8 @@ const app = {
 
     // Get list Song 
     getListSongs: function () {
-        fetch('https://nhatthanh.online/api/getinfoplaylist?idlist=ZWZB969E')
+        // fetch('https://nhatthanh.online/api/getinfoplaylist?idlist=ZWZB969E')
+        fetch('https://music-player-pink.vercel.app/api/playlist?id=ZWZB969E')
             .then(res => res.json())
             .then(data => {
                 this.songs = (data.data.song.items)
@@ -202,7 +203,7 @@ const app = {
         if (this.currentIndex >= this.songs.length) {
             this.currentIndex = 0;
         }
-        this.loadSong();
+        // this.loadSong();
     },
 
     preSong: function () {
@@ -210,7 +211,7 @@ const app = {
         if (this.currentIndex < 0) {
             this.currentIndex = this.songs.length - 1;
         }
-        this.loadSong();
+        // this.loadSong();
     },
 
     playRandomSong: function () {
@@ -316,7 +317,7 @@ const app = {
                     );
 
                     app.render();
-                    app.loadSong();
+                    // app.loadSong();
                     audio.play();
                     app.scrollToActiveSong();
                 } else if (e.target.closest("song-item-action")) {
@@ -379,7 +380,8 @@ const app = {
         };
     },
     getOneSong(id){
-        fetch(`https://nhatthanh.online/api/getsonginfo?id=${id}`)
+        // fetch(`https://nhatthanh.online/api/getsonginfo?id=${id}`)
+        fetch(`https://music-player-pink.vercel.app/api/info?id=${id}`)
             .then(response => response.json())
             .then(item => {
                 this.songs.unshift(item.data)
@@ -390,10 +392,11 @@ const app = {
     },
     loadSong( play = false,id = this.songs[this.currentIndex].encodeId){
         // api info Song
-        const info =  fetch(`https://nhatthanh.online/api/getsonginfo?id=${id}`)
+        const info =  fetch(`https://music-player-pink.vercel.app/api/info?id=${id}`)
             .then(response => response.json())
             .then(song => song.data)
-        const linkMp3 =  fetch(`https://nhatthanh.online/api/getsong?id=${id}`)   
+        // const linkMp3 =  fetch(`https://nhatthanh.online/api/getsong?id=${id}`) 
+        const linkMp3 =  fetch(`https://music-player-pink.vercel.app/api/song?id=${id}`)   
             .then(response => response.json())
             .then(data => data.data[128])
 

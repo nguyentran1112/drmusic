@@ -1,0 +1,20 @@
+{
+    "root": "",
+    "serverName": "<heroku_app_name>.herokuapp.com",
+    "dbHost": "<db_host>",
+    "dbName": "<db_name>",
+    "dbPort": 55411,
+    "dataRoot": "data",
+    "sessionSecret": "your-session-secret",
+    "useffmpeg": true,
+    "smtpService": "none",
+    "smtpUsername": "",
+    "smtpPassword": "",
+    "fromAddress": "",
+    "outputPlugin": "adapt",
+    "dbType": "mongoose",
+    "auth": "local",
+    "masterTenantName": "master",
+    "masterTenantID": "593b088abe2c5620056e6ef2",
+    "isProduction": true
+  }
