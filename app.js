@@ -399,6 +399,9 @@ const app = {
         const linkMp3 =  fetch(`https://music-player-pink.vercel.app/api/song?id=${id}`)   
             .then(response => response.json())
             .then(data => data.data[128])
+            .catch((error) => {
+                console.error(error);
+            })
 
         Promise.all([info, linkMp3])
             .then(([data,...link]) => {
@@ -406,14 +409,15 @@ const app = {
                 audio.src = link;
                
                 // set info
-                    heading.textContent = this.currentSong.title;
-                    headingsub.textContent = this.currentSong.artistsNames;
+                    heading.textContent = data.title;
+                    headingsub.textContent = data.artistsNames;
                     cdThumb.style.backgroundImage = `url(${data.thumbnailM})`;
                     if(!play){
                         audio.play()
                     }   
     //     audio.src = this.currentSong.path;
             })
+            
             
         },
             
